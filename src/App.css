@@ -1,0 +1,146 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* App.css */
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+h2 {
+  color: #e0e0e0;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.wallet-info {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wallet-info p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.wallet-info .public-key {
+  font-weight: bold;
+  color: #76c7c0;
+  /* Teal color for the public key */
+  word-break: break-all;
+  /* Prevent overflow */
+}
+
+.wallet-info .balance {
+  font-size: 22px;
+  color: #ffeb3b;
+  /* Bright yellow for balance */
+}
+
+input {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input:focus {
+  background-color: #444;
+  border-color: #777;
+  outline: none;
+}
+
+button {
+  background-color: #1e88e5;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+p {
+  margin: 10px;
+}
