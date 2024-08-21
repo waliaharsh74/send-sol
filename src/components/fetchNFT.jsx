@@ -10,22 +10,32 @@ function FetchNFT() {
     const { publicKey, connected } = useWallet();
     const getNFT = async (walletAddress) => {
         try {
-            const url = `https://api.shyft.to/sol/v1/wallet/collections?network=mainnet-beta&wallet_address=${walletAddress}`
-            const headers = {
-                'x-api-key': 'y0k0hu9943Lj3p2r'
+
+            const url = `https://nft-backend-a3ah.onrender.com/wesol/v1/fetch-nft`
+            // const url = `https://api.shyft.to/sol/v1/wallet/collections?network=mainnet-beta&wallet_address=${walletAddress}`
+            // const headers = {
+            //     'x-api-key': 'y0k0hu9943Lj3p2r'
+            // }
+
+            const body = {
+                walletAddress
             }
-            const { data } = await axios.get(url, { headers })
-            setNftData(data)
+
+            const { data } = await axios.post(url, body)
+            // console.log(data);
+            // setNftData(data)
             // console.log(data.result.collections);
-            const newArr = data.result.collections.flatMap((item) => item.nfts);
-            setCollection(newArr);
+            // const newArr = data.result.collections.flatMap((item) => item.nfts);
+            // setCollection(newArr);
 
 
 
 
 
             // console.log(newArr);
-            return newArr
+            setCollection(data.data)
+
+            return data
         } catch (error) {
             console.log(error);
         }
@@ -43,25 +53,28 @@ function FetchNFT() {
             console.log(error);
         }
     };
-    const add = 'DcJxE53h1NvzjNQNSmNv6hvaGv7rUCL3jj3aUVoiX2LY'
+    const add = 'A6Mr3Ej6Cf75uRjhzWFSz8eAU3BMwF2PbhB7jQUuvBBt'
 
     useEffect(() => {
-        setCollection(getNFT(add))
+        getNFT(add)
+
+
 
     }, [])
-    useEffect(() => {
-        if (collections.length > 0) {
-            fetchImages();
-        }
-    }, [collections]);
+    // useEffect(() => {
+    //     if (collections.length > 0) {
+    //         fetchImages();
+    //     }
+    // }, [collections]);
     return (
         <div>
             Your NFTs
-            {images.length > 0 && (
+            {console.log(collections)}
+            {(
 
                 <div>
-                    {images.map((im, index) => (
-                        <img key={index} src={im} alt={`NFT ${index}`} width={200} height={100} />
+                    {collections.map((im, index) => (
+                        <img key={index} src={im?.metadata?.image} alt={`NFT ${index}`} width={200} height={100} />
                     ))}
                 </div>
             )}

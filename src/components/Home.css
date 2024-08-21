@@ -1,0 +1,38 @@
+.home div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.wallet-info {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.wallet-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.wallet-info .public-key {
+    font-weight: bold;
+    color: #76c7c0;
+    /* Teal color for the public key */
+    word-break: break-all;
+    /* Prevent overflow */
+}
+
+.wallet-info .balance {
+    font-size: 22px;
+    color: #ffeb3b;
+    /* Bright yellow for balance */
+}

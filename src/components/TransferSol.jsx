@@ -32,6 +32,7 @@ const TransferSol = () => {
                     lamports,
                 })
             );
+            console.log(transaction);
 
             const signature = await sendTransaction(transaction, connection);
 

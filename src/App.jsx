@@ -1,57 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
-import TransferSol from './components/TransferSol';
-import FetchNft from './components/fetchNFT'
-import MintNft from './components/MintNft';
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import ShowCollections from './components/ShowCollections';
+import PrivateRoute from './components/PrivateRoute'
+import ShowNFT from './components/ShowNFT';
+import './app.css'
+
 
 function App() {
-  const { publicKey } = useWallet();
-  const [balance, setBalance] = useState(null);
-  const connection = new Connection(clusterApiUrl('devnet'));
-
-  useEffect(() => {
-    if (publicKey) {
-      const fetchBalance = async () => {
-        const walletBalance = await getWalletBalance(publicKey.toString());
-        setBalance(walletBalance);
-      };
-
-      fetchBalance();
-    }
-  }, [publicKey]);
-
-  const getWalletBalance = async (walletAddress) => {
-    try {
-      const publicKey = new PublicKey(walletAddress);
-      const balance = await connection.getBalance(publicKey);
-      return balance / 1e9; // Convert lamports to SOL
-    } catch (error) {
-      console.error('Error fetching balance:', error);
-    }
-  };
-
   return (
-    <div>
-      <h1>Solana Wallet App</h1>
-      <WalletMultiButton />
-      {publicKey ? (
-        <div className="wallet-info">
-          <p className="public-key">Connected with: {publicKey.toString()}</p>
-          {balance !== null && (
-            <p className="balance">Wallet Balance: {balance} SOL</p>
-          )}
-        </div>
-      ) : (
-        <p>Please connect your wallet.</p>
-      )}
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/collections" element={<ShowCollections />} />
+        <Route path="/nfts/:templateId" element={<ShowNFT />} />
 
-      {publicKey && <TransferSol />}
-    </div>
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-

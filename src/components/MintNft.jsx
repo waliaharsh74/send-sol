@@ -1,99 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import { useWallet, WalletProvider } from '@solana/wallet-adapter-react';
-import { Connection, PublicKey, Transaction } from '@solana/web3.js';
-import { Metaplex, keypairIdentity, toMetaplexFile } from '@metaplex-foundation/js';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const MintNft = () => {
-    const { publicKey, sendTransaction, wallet, connect, disconnect, connected } = useWallet();
-    const [minting, setMinting] = useState(false);
-    const [nftUri, setNftUri] = useState('https://gateway.pinata.cloud/ipfs/QmTD1jp3jxa3dn1UX8xucWQVuXotwbsbbD1YSXqPsjyRkX');
+function MintNft() {
+    const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-
-    const connection = new Connection('https://api.devnet.solana.com');
-
-    const metaplex = Metaplex.make(connection).use(keypairIdentity(publicKey));
-    // const metaplex = Metaplex.make(connection)
-
     useEffect(() => {
-        if (wallet && !connected) {
-            connect().catch(console.error);
-        }
-    }, [wallet, connect, connected]);
+        const fetchData = async () => {
+            const apiKey = 'sk_staging_21j2imXjoPfjqbAyJjWCSUS6tSsvNupsZHVd9C7d6byoHEavk2w7DW5akrFB51sHQmwPtgrnFmfStpHEauKwJAwNbwDvaD3ft5DC8oq9ufnYmoFgiBqspwufb7mbfXiKTtiF5o6gjtXe5FcrfFEeBmVyWMe7Sx3uVEp1NdMGDvG9kMMMe63EV3qbqAqtVJEM25BnQhupmfmnNRPWzcAbk8h'; // Replace with your actual API key
+            const collectionId = 'd383cf76-23f5-4c1e-a97e-b9f6e9e0b112'; // Replace with your actual collectionId
+            const templateId = 'abacd1e6-8e14-4c9c-9297-cd5e10fb79f9'; // Replace with your actual templateId
 
-    const mintNFT = async () => {
-        if (!publicKey || !nftUri) {
-            setError('Wallet not connected or NFT URI not provided.');
-            return;
-        }
+            try {
 
-        setMinting(true);
-        setError(null);
+                const response = await axios.get(
+                    `https://proxy.cors.sh/https://staging.crossmint.com/api/2022-06-09/collections/${collectionId}/templates/${templateId}`,
+                    {
+                        headers: {
+                            'X-API-KEY': apiKey
+                        }
+                    }
+                );
+                console.log(response.data);
+                setData(response.data);
+            } catch (err) {
+                setError(err);
+            }
+        };
+
+        fetchData();
+    }, []);
+    if (error) {
+        console.log(error);
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (!data) {
+        return <div>Loading...</div>;
+    }
+
+    const postNFTData = async () => {
+        const apiKey = 'sk_staging_21j2imXjoPfjqbAyJjWCSUS6tSsvNupsZHVd9C7d6byoHEavk2w7DW5akrFB51sHQmwPtgrnFmfStpHEauKwJAwNbwDvaD3ft5DC8oq9ufnYmoFgiBqspwufb7mbfXiKTtiF5o6gjtXe5FcrfFEeBmVyWMe7Sx3uVEp1NdMGDvG9kMMMe63EV3qbqAqtVJEM25BnQhupmfmnNRPWzcAbk8h'; // Replace with your actual API key
+        const collectionId = 'd383cf76-23f5-4c1e-a97e-b9f6e9e0b112'; // Replace with your actual collectionId
+        const templateId = 'abacd1e6-8e14-4c9c-9297-cd5e10fb79f9';
+        const url = `https://staging.crossmint.com/api/2022-06-09/collections/${collectionId}/nfts`;
+
+        const payload = {
+            metadata: {
+                name: "Crossmint Example NFT",
+                image: "https://www.crossmint.com/assets/crossmint/logo.png",
+                description: "My NFT created via the mint API!",
+                animation_url: "<string>",
+                attributes: [
+                    {
+                        display_type: "boost_number",
+                        trait_type: "<string>",
+                        value: "<string>"
+                    }
+                ]
+            },
+            recipient: "email:testy@crossmint.com:polygon",
+            reuploadLinkedFiles: true,
+            compressed: true
+        };
 
         try {
-
-            const file = toMetaplexFile('/', 'ape.jpeg');
-            const imageUri = await metaplex.storage().upload(file);
-
-            const { uri } = await metaplex.nfts().uploadMetadata({
-                name: "My NFT",
-                description: "My description",
-                image: imageUri,
+            const response = await axios.post(url, payload, {
+                headers: {
+                    'X-API-KEY': apiKey,
+                    'Content-Type': 'application/json'
+                }
             });
-
-            const { nft } = await metaplex.nfts().create(
-                {
-                    uri: uri,
-                    name: "My NFT",
-                    sellerFeeBasisPoints: 0,
-                },
-                { commitment: "finalized" },
-            );
-            // console.log(nft);
-
-            // await wallet.connect()
-            // const { nft, txId } = await metaplex.nfts().create({
-            //     uri: nftUri,
-            //     name: 'Bored Ape',
-            //     symbol: '',
-            //     sellerFeeBasisPoints: 500,
-            //     creators: null,
-            // }, { commitment: "finalized" });
-
-            console.log(nft);
-
-            // // Prepare the transaction to be sent
-            // const transaction = new Transaction().add(txId);
-
-            // // Sign and send transaction using Phantom wallet
-            // const txHash = await sendTransaction(transaction, connection);
-
-            // // Confirm transaction
-            // await connection.confirmTransaction(txHash);
-
-            alert('NFT minted successfully!');
-        } catch (err) {
-            console.error(err);
-            setError('Minting failed. Please try again.');
-        } finally {
-            setMinting(false);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error making the request:', error);
         }
     };
 
+    // Call the function where you need to use it
+    postNFTData();
     return (
-        <div>
-            <h2>Mint a New NFT</h2>
-            <input
-                type="text"
-                placeholder="Enter metadata URI"
-                value={nftUri}
-                onChange={(e) => setNftUri(e.target.value)}
-            />
-            <button onClick={mintNFT} disabled={minting}>
-                {minting ? 'Minting...' : 'Mint NFT'}
-            </button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
-    );
-};
+        <div>  <h1>Data</h1>
+            <pre>{JSON.stringify(data, null, 2)}</pre></div>
+    )
+}
 
-export default MintNft;
+export default MintNft
