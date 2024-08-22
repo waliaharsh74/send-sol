@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import ShowCollections from './components/ShowCollections';
 import PrivateRoute from './components/PrivateRoute'
 import ShowNFT from './components/ShowNFT';
-import './app.css'
+import './App.css'
 
 
 function App() {
