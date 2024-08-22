@@ -58,7 +58,7 @@ function MintNft() {
                     }
                 ]
             },
-            recipient: "email:testy@crossmint.com:polygon",
+            recipient: "solana:testy@crossmint.com:polygon",
             reuploadLinkedFiles: true,
             compressed: true
         };

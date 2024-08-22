@@ -15,10 +15,9 @@ const getRandomSize = () => {
 const ShimmerPlaceholder = ({ count = 5 }) => {
     const placeholders = Array.from({ length: count }, (_, index) => {
         const size = getRandomSize();
-        return <>
-            <div key={index} className="shimmer-placeholder-item" style={size}></div>
+        return <div key={index} className="shimmer-placeholder-item" style={size}></div>
 
-        </>
+        
     });
 
     return (
