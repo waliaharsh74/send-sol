@@ -3,6 +3,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
 import TransferSol from './TransferSol';
+import FetchTokens from './FetchTokens';
 import FetchNft from './fetchNFT'
 import './Home.css'
 
@@ -10,6 +11,7 @@ import './Home.css'
 import MintNft from './MintNft';
 import Masonry from './Masonry';
 import ShowCollections from './ShowCollections';
+import TokenCreationForm from './TokenCreationForm';
 
 function Home() {
     const { publicKey } = useWallet();
@@ -52,7 +54,9 @@ function Home() {
                 <p>Please connect your wallet.</p>
             )}
 
-            {publicKey && <TransferSol />}
+            {/* {publicKey && <TransferSol />} */}
+            {publicKey && <TokenCreationForm />}
+            {publicKey && <FetchTokens walletToQuery={publicKey.toString()} />}
             {/* <MintNft /> */}
             {/* <FetchNft /> */}
 

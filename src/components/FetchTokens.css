@@ -1,0 +1,48 @@
+.loading,
+.error {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.loading {
+    background-color: #007bff;
+}
+
+.error {
+    background-color: #dc3545;
+}
+
+.token-accounts-list {
+    margin: 0;
+    padding: 0;
+}
+
+.token-account-item {
+    margin-bottom: 15px;
+}
+
+.token-account-box {
+    padding: 15px;
+    /* border: 1px solid #ddd; */
+    border-radius: 6px;
+    background-color: #1f1f1f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.token-account-box strong {
+    display: block;
+    margin-bottom: 5px;
+    /* color: #555; */
+}
+
+ul {
+    list-style-type: none;
+}
+
+.strong {
+    display: flex;
+    align-items: center;
+}
