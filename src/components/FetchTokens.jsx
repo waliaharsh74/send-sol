@@ -53,7 +53,7 @@ const FetchTokens = ({ walletToQuery }) => {
         <div className="fetch-tokens-container">
             <h2>Token Accounts In Wallet</h2>
             {loading ? (
-                <div className="loading">Loading...</div>
+                <div className="loading">Fetching Details...</div>
             ) : error ? (
                 <div className="error">Error: {error}</div>
             ) : (
