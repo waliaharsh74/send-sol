@@ -12,8 +12,8 @@ const TokenCreationForm = () => {
 
     const [walletAddress, setWalletAddress] = useState('');
     const [setFreezeAuthority, setSetFreezeAuthority] = useState(false);
-    const [decimal, setDecimal] = useState(9);
-    const [supply, setSupply] = useState(0);
+    const [decimal, setDecimal] = useState(" ");
+    const [supply, setSupply] = useState("");
     const [message, setMessage] = useState('');
 
 
@@ -100,34 +100,34 @@ const TokenCreationForm = () => {
 
 
     return (
-        <div>
-            <h1>Token Manager</h1>
+        <div className='token-form'>
+            <h2>Token Manager</h2>
             <div className='input'>
 
-                <div>Decimal:</div>
+                {/* <div>Decimal:</div> */}
                 <input
                     type="number"
                     placeholder="Decimal"
                     value={decimal}
-                    min={0}
+
                     max={100}
                     onChange={(e) => setDecimal(parseInt(e.target.value))}
                 />
             </div>
             <div className='input'>
 
-                <div>Supply of Tokens:</div>
+                {/* <div>Supply of Tokens:</div> */}
                 <input
                     type="number"
                     placeholder="Supply"
                     value={supply}
-                    min={1}
+
                     max={1000000000}
                     onChange={(e) => setSupply(parseInt(e.target.value))}
                 />
             </div>
 
-            <button onClick={createToken}>Create Token and Transfer</button>
+            <button className='minting-button' onClick={createToken}>Create Token and Transfer</button>
             <p>{message}</p>
         </div>
     );

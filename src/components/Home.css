@@ -8,8 +8,10 @@
 .wallet-info {
     background-color: #1f1f1f;
     border-radius: 10px;
-    padding: 20px;
-    width: 350px;
+    /* padding: 20px; */
+
+    width: 550px;
+    height: 220px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -18,26 +20,68 @@
 
 }
 
+.minting-button {
+    margin-top: 5px !important;
+    background: linear-gradient(90deg, #0f2a4b, #0a6f9d, #16a085);
+}
+
 .wallet-info p {
     font-size: 18px;
     margin: 10px 0;
 }
 
 .wallet-info .public-key {
+
+
     font-weight: bold;
-    color: #76c7c0;
-    /* Teal color for the public key */
+    color: #8b8b8b;
+
     word-break: break-all;
-    /* Prevent overflow */
+    font-size: 22px;
+
 }
 
 .wallet-info .balance {
+    margin-top: 30px;
     font-size: 22px;
-    color: #ffeb3b;
-    /* Bright yellow for balance */
+    font-weight: bold;
+    color: #8b8b8b;
+
 }
+
+
 
 .input {
     display: flex !important;
     flex-direction: row !important;
+}
+
+.first-row {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.transfer-sol,
+.token-form {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.token-form div {
+    padding: 10px !important;
+}
+
+.token-form {
+    height: 289px !important;
+}
+
+.input input {
+    margin: 0px !important;
 }

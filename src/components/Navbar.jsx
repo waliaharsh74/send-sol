@@ -8,8 +8,8 @@ function Navbar() {
     return (
         <header className="navbar">
 
-            <Link to='/'><h1 className="heading">Solana Wallet App</h1></Link>
-            <Link to='/collections'><h1 className="heading">Collections</h1></Link>
+            <Link to='/' className="heading"><h1 >Solana Wallet App</h1></Link>
+            <Link to='/collections' className="heading"><h1 >Collections</h1></Link>
 
             <WalletMultiButton className="wallet-button" />
         </header>

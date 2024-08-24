@@ -48,7 +48,7 @@ const TransferSol = () => {
     };
 
     return (
-        <div>
+        <div className='transfer-sol'>
             <h2>Transfer SOL on Devnet</h2>
             <input
                 type="text"
@@ -62,7 +62,7 @@ const TransferSol = () => {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
             />
-            <button onClick={handleTransfer}>Transfer SOL</button>
+            <button className='minting-button' onClick={handleTransfer}>Transfer SOL</button>
             {transactionStatus && <p>{transactionStatus}</p>}
         </div>
     );

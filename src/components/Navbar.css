@@ -1,5 +1,6 @@
 /* Navbar.css */
 .navbar {
+    background: linear-gradient(90deg, #0f2a4b, #0a6f9d, #16a085);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,9 +9,9 @@
 }
 
 .heading {
-    font-size: 1.5rem;
+    font-size: 10px;
     margin: 0;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .wallet-button {

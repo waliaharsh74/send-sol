@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { none } from '@metaplex-foundation/umi';
 import './FetchTokens.css';
 
 const rpcEndpoint = 'https://api.devnet.solana.com';
@@ -17,12 +16,12 @@ const FetchTokens = ({ walletToQuery }) => {
                 const solanaConnection = new Connection(rpcEndpoint);
                 const filters = [
                     {
-                        dataSize: 165, // Size of the token account data (bytes)
+                        dataSize: 165,
                     },
                     {
                         memcmp: {
-                            offset: 32, // Location of the wallet in the account data (bytes)
-                            bytes: new PublicKey(walletToQuery).toBase58(), // Base58 encoded wallet address
+                            offset: 32,
+                            bytes: new PublicKey(walletToQuery).toBase58(),
                         },
                     },
                 ];
@@ -63,19 +62,17 @@ const FetchTokens = ({ walletToQuery }) => {
                         <p>No token accounts found.</p>
                     ) : (
                         <ul className='ul'>
-                            {tokenAccounts.map((account, i) => (
+                            {tokenAccounts.filter((item) => item.tokenBalance > 0).map((account, i) => (
                                 <li key={i} className="token-account-item" >
                                     <div className="token-account-box">
-                                        <strong>Token Account No. {i + 1}:</strong>
+                                        <strong>Token Account No. {i + 1}</strong>
+
                                         <div className='strong'>
-                                            <strong>Public Key:{account.pubkey}</strong>
-                                        </div>
-                                        <div className='strong'>
-                                            <strong>Token Mint:{account.mintAddress}</strong>
+                                            <strong>Token Mint:<span className='token-data'> {account.mintAddress}</span></strong>
                                         </div>
                                         <div className='strong'>
 
-                                            <strong>Token Balance:{account.tokenBalance}</strong>
+                                            <strong>Token Balance:<span className='token-data'>{account.tokenBalance}</span></strong>
                                         </div>
 
 

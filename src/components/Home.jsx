@@ -43,20 +43,29 @@ function Home() {
         <div className='home'>
 
             {publicKey ? (
+                <div className="first-row">
+                    <div className="wallet-info cen">
+                        <h2>Wallet Info</h2>
+                        <p className="public-key">Connected with: <span className='token-data'>{publicKey.toString()}</span></p>
+                        {balance !== null && (
+                            <p className="balance">Wallet Balance: <span className='token-data'>{balance} SOL</span></p>
+                        )}
+                    </div>
+                    <TransferSol />
 
-                <div className="wallet-info cen">
-                    <p className="public-key">Connected with: {publicKey.toString()}</p>
-                    {balance !== null && (
-                        <p className="balance">Wallet Balance: {balance} SOL</p>
-                    )}
                 </div>
+
             ) : (
                 <p>Please connect your wallet.</p>
             )}
+            <div className="first-row">
 
-            {/* {publicKey && <TransferSol />} */}
-            {publicKey && <TokenCreationForm />}
-            {publicKey && <FetchTokens walletToQuery={publicKey.toString()} />}
+                {publicKey && <TokenCreationForm />}
+
+                {publicKey && <FetchTokens walletToQuery={publicKey.toString()} />}
+            </div>
+
+
             {/* <MintNft /> */}
             {/* <FetchNft /> */}
 

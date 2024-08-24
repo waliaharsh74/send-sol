@@ -6,7 +6,8 @@
 }
 
 .shimmer-placeholder-item {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background: linear-gradient(90deg, #0f2a4b 25%, #0a6f9d 50%, #16a085 75%);
+    /* background: linear-gradient(90deg, #0f2a4b, #0a6f9d, #16a085); */
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
     border-radius: 8px;

@@ -1,3 +1,47 @@
+.token-accounts-list {
+    margin: 0;
+    padding: 0;
+    max-height: 180px;
+
+    overflow-y: auto;
+
+    border-radius: 4px;
+
+}
+
+.token-account-item {
+    margin-bottom: 15px;
+
+
+}
+
+
+.token-account-box {
+    padding: 15px !important;
+    margin-top: 15px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #121212;
+
+}
+
+.token-account-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+
+    margin: 0;
+}
+
+ul div {
+    padding: 5px !important;
+}
+
+
 .loading,
 .error {
     padding: 10px;
@@ -15,34 +59,23 @@
     background-color: #dc3545;
 }
 
-.token-accounts-list {
-    margin: 0;
-    padding: 0;
-}
-
-.token-account-item {
-    margin-bottom: 15px;
-}
-
-.token-account-box {
-    padding: 15px;
-    /* border: 1px solid #ddd; */
-    border-radius: 6px;
-    background-color: #1f1f1f;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.token-account-box strong {
-    display: block;
-    margin-bottom: 5px;
-    /* color: #555; */
-}
-
-ul {
-    list-style-type: none;
-}
-
 .strong {
     display: flex;
     align-items: center;
+}
+
+.token-data {
+    color: #1DD79B;
+}
+
+.fetch-tokens-container {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    text-align: center;
 }
