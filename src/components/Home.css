@@ -36,3 +36,8 @@
     color: #ffeb3b;
     /* Bright yellow for balance */
 }
+
+.input {
+    display: flex !important;
+    flex-direction: row !important;
+}
