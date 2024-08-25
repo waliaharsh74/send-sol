@@ -21,6 +21,10 @@ const TokenCreationForm = () => {
     async function createToken() {
 
         try {
+            if (!decimal || !supply) {
+                alert('Please provide both Decimal and Supply.');
+                return;
+            }
             setMessage('Processing... It may take some time');
             const MINOR_UNITS_PER_MAJOR_UNITS = Math.pow(10, decimal);
             const connection = new web3.Connection(web3.clusterApiUrl("devnet"));

@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 function Navbar() {
     return (
         <header className="navbar">
+            <div className="links">
 
-            <Link to='/' className="heading"><h1 >Solana Wallet App</h1></Link>
-            <Link to='/collections' className="heading"><h1 >Collections</h1></Link>
 
+
+                <Link to='/' className="heading"><h1 >Home</h1></Link>
+                <Link to='/collections' className="heading"><h1 >NFT Collection</h1></Link>
+                <Link to='/crowd-funding' className="heading"><h1 >Crowd Funding</h1></Link>
+            </div>
             <WalletMultiButton className="wallet-button" />
         </header>
     );

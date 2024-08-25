@@ -8,6 +8,14 @@
 
 }
 
+.links {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
 .heading {
     font-size: 10px;
     margin: 0;

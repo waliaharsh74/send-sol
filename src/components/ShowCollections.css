@@ -4,12 +4,14 @@
 
 .masonry-grid {
     display: flex;
-    margin-left: -15px; /* gutter size offset */
+    margin-left: -15px;
+    /* gutter size offset */
     width: auto;
 }
 
 .masonry-grid_column {
-    padding-left: 15px; /* gutter size */
+    padding-left: 15px;
+    /* gutter size */
     background-clip: padding-box;
 }
 
@@ -73,7 +75,7 @@
 }
 
 .view-btn {
-    background-color: #ff5722;
+    background: linear-gradient(90deg, #0f2a4b, #0a6f9d, #16a085);
     color: white;
     padding: 10px 20px;
     text-decoration: none;

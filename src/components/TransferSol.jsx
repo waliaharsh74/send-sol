@@ -6,7 +6,9 @@ const TransferSol = () => {
     const { publicKey, sendTransaction } = useWallet();
     const [recipient, setRecipient] = useState('');
     const [amount, setAmount] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
     const [transactionStatus, setTransactionStatus] = useState('');
+    const [isValidRecipient, setIsValidRecipient] = useState(true);
 
     const handleTransfer = async () => {
         if (!publicKey) {
@@ -19,9 +21,11 @@ const TransferSol = () => {
             return;
         }
 
+
         try {
             const connection = new Connection('https://api.devnet.solana.com');
             const recipientPublicKey = new PublicKey(recipient);
+
             const lamports = parseFloat(amount) * 1e9; // Convert SOL to lamports
 
 
@@ -41,9 +45,17 @@ const TransferSol = () => {
             await connection.confirmTransaction(signature, 'processed');
 
             setTransactionStatus(`Transaction successful with signature: ${signature}`);
+            setShowPopup(true);
+            setTimeout(() => {
+                setShowPopup(false);
+            }, 5000);
         } catch (error) {
             console.error('Error sending transaction:', error);
-            setTransactionStatus('Transaction failed');
+            setTransactionStatus('Transaction failed! ' + error.message);
+            setShowPopup(true);
+            setTimeout(() => {
+                setShowPopup(false);
+            }, 5000);
         }
     };
 
@@ -63,7 +75,11 @@ const TransferSol = () => {
                 onChange={(e) => setAmount(e.target.value)}
             />
             <button className='minting-button' onClick={handleTransfer}>Transfer SOL</button>
-            {transactionStatus && <p>{transactionStatus}</p>}
+            {showPopup && (
+                <div className='popup'>
+                    <p>{transactionStatus}</p>
+                </div>
+            )}
         </div>
     );
 };

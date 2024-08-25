@@ -65,7 +65,7 @@ const FetchTokens = ({ walletToQuery }) => {
                             {tokenAccounts.filter((item) => item.tokenBalance > 0).map((account, i) => (
                                 <li key={i} className="token-account-item" >
                                     <div className="token-account-box">
-                                        <strong>Token Account No. {i + 1}</strong>
+                                        <strong className='token-no'>Token Account No. {i + 1}</strong>
 
                                         <div className='strong'>
                                             <strong>Token Mint:<span className='token-data'> {account.mintAddress}</span></strong>
