@@ -105,7 +105,7 @@ const TokenCreationForm = () => {
 
     return (
         <div className='token-form'>
-            <h2>Token Manager</h2>
+            <h2>Create Your Own Token </h2>
             <div className='input'>
 
                 {/* <div>Decimal:</div> */}
