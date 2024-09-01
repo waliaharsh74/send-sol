@@ -38,9 +38,9 @@
 3. Install dependencies && Start the development server::
 
    ```bash
-   cd send-sol
-   npm start
-4. Open your browser and go to http://localhost:3000 to view the application.
+   npm install
+   npm run dev
+4. Open your browser and go to http://localhost:5173 to view the application.
 
 ![Connect Wallet](public/collections.png "Connect Wallet Screenshot")
 ## Usage
