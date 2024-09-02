@@ -31,7 +31,10 @@ function ShowCollections() {
         <div className="collection-container">
             <h3>Browse these NFTs</h3>
             {loading ? (
-                <ShimmerPlaceholder count={6} />
+                <div>
+                    <h2 className="warning">Please wait requests may take 50 seconds or more!</h2>
+                    <ShimmerPlaceholder count={6} />
+                </div>
             ) : (
                 <Masonry
                     breakpointCols={{ default: 4, 1100: 3, 700: 2, 500: 1 }}
