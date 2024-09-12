@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Connection, PublicKey } from '@solana/web3.js';
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token';
 import './FetchTokens.css';
+import { Metadata } from "@metaplex-foundation/mpl-token-metadata";
+import { Metaplex } from '@metaplex-foundation/js';
+import { programs } from "@metaplex/js"
+
 
 const rpcEndpoint = 'https://api.devnet.solana.com';
 
@@ -39,7 +43,30 @@ const FetchTokens = ({ walletToQuery }) => {
                         };
                     })
                 );
+                const allAccounts = await solanaConnection.getProgramAccounts(TOKEN_2022_PROGRAM_ID, {
+                    commitment: 'confirmed',
+                    filters: [
+                        {
+                            memcmp: {
+                                offset: 32,
+                                bytes: new PublicKey(walletToQuery).toString(),
+                            },
+                        },
+                    ],
+                });
+                console.log(allAccounts[0].pubkey.toString());
+                const metaplex = Metaplex.make(solanaConnection);
+                const metadataPda = metaplex.nfts().pdas().metadata({ mint: allAccounts[0].pubkey });
+
+
+
+
+
+
+
+
             } catch (err) {
+                console.error(err);
                 setError(err.message);
             } finally {
                 setLoading(false);

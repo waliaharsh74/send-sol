@@ -5,6 +5,11 @@
     padding: 20px;
 }
 
+.btn {
+    margin-top: 40px;
+    padding: 10px;
+}
+
 .wallet-info {
     background-color: #1f1f1f;
     border-radius: 10px;

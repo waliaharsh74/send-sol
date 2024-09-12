@@ -7,6 +7,7 @@ import CrowdFunding from './components/CrowdFunding';
 import PrivateRoute from './components/PrivateRoute'
 import ShowNFT from './components/ShowNFT';
 import './App.css'
+import TokenLaunchPad from './pages/TokenLaunchPad';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/collections" element={<ShowCollections />} />
         <Route path="/crowd-funding" element={<CrowdFunding />} />
         <Route path="/nfts/:templateId" element={<ShowNFT />} />
+        <Route path="/token-launch-pad" element={<TokenLaunchPad />} />
 
       </Routes>
     </Router>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ShowNFT from './ShowNFT';
+import ShowNFT from '../components/ShowNFT';
 import { Link } from 'react-router-dom';
 import ShimmerPlaceholder from '../utils/ShimmerPlaceholder';
 import Masonry from 'react-masonry-css';
