@@ -8,6 +8,36 @@
     border-radius: 4px;
 
 }
+.token-head{
+    /* display: flex!important;
+    flex-direction: row!important; */
+  
+    align-items: center; 
+    width: 100%; 
+    justify-content: flex-start;
+    width: 480px;
+    
+
+}
+.nothing-found{
+    margin-top: 50px;
+    height: 300px;
+}
+.token-head img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* flex-shrink: 0; */
+}
+.token-info  {
+   
+    display: flex;
+    justify-content: left;
+    /* align-items: center!important; */
+    /* flex-shrink: 0; */
+}
+
 
 .token-account-item {
     margin-bottom: 15px;
@@ -23,7 +53,7 @@
     padding: 15px !important;
     margin-top: 15px;
     border-radius: 4px;
-
+    width: 500px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     background-color: #121212;
 
@@ -33,6 +63,8 @@
     display: block;
     margin-bottom: 5px;
     border-radius: 4px;
+    margin-left: 20px;
+    
 }
 
 ul {
@@ -83,12 +115,16 @@ ul div {
 .strong {
     display: flex;
     align-items: center;
+    
 }
 
 .token-data {
     color: #1DD79B;
+    font-size:20px;
 }
-
+.supply{
+    font-size:20px;
+}
 .fetch-tokens-container {
     background-color: #1f1f1f;
     border-radius: 10px;
